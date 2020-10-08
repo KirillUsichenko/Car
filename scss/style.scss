@@ -1,7 +1,7 @@
 @import "vars";
 @import "libs";
 @import "fonts";
-@import "media";
+
 
 a {
   color: white;
@@ -28,6 +28,7 @@ body {
     justify-content: space-between;
   }
   &-btn {
+    cursor: pointer;
     width: 60px;
     height: 60px;
     border: 1px solid #fff;
@@ -71,6 +72,9 @@ body {
   padding: 0 15px;
   max-width: 1230px;
   margin: 0 auto;
+  &-menu{
+    position: relative;
+  }
 }
 
 .logo {
@@ -78,12 +82,75 @@ body {
   margin-bottom: 29px;
 }
 
+.menu{
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  transition: all .5s;
+  z-index: 7;
+  &__list{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    & ul{
+      list-style: none;
+    }
+    & a{
+      font-size: 48px;
+      line-height: 56px;
+      font-weight: bold;
+      padding: 30px 25px 14px 0;
+      border-bottom: 3px solid #B70021;
+      min-width: 368px;
+      display: inline-block;
+      &:hover{
+        border-color: #fff;
+        transition: all .5s;
+        color: #B70021;
+        transform: scale(1.2);
+        margin-left: 37px;
+      }
+    }
+  }
+  &.active{
+    left: 0;
+  }
+}
+
+.close-btn{
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 15px;
+  top: 31px;
+  cursor: pointer;
+  &::after , &::before{
+    transform-origin: left;
+    position: absolute;
+    content: "";
+    width: 70px;
+    height: 2px;
+    background-color: #fff;
+    
+  }
+  &::after{
+    transform: rotate(45deg);
+  }
+  &::before{
+    transform: rotate(-45deg);
+    bottom: -1px;
+  }
+}
+
 .slider {
   & .slick-dots {
     margin: -55px auto 0;
     position: relative;
     z-index: 6;
-    max-width: 1300px;
+    max-width: 1230px;
+    padding: 0 15px;
     & button {
       width: 15px;
       height: 15px;
@@ -212,6 +279,9 @@ body {
   }
   &__images {
     margin-bottom: 100px;
+    & img{
+      width: 100%;
+    }
   }
 }
 
@@ -240,3 +310,5 @@ body {
     }
   }
 }
+
+@import "media";
